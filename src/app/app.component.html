@@ -1,0 +1,30 @@
+<div class='app'>
+
+  <div class='app-top'>
+    <div class="title-center">
+      <h1>Raie-Creation Prise de RDV</h1>
+    </div>
+    Regions:
+    <select id='locale-selector'></select>
+    <button (click)='toggleWeekends()'>Afficher les weekends</button>
+  </div>
+
+  <div class='app-calendar'>
+    <full-calendar
+      #calendar
+      defaultView="dayGridMonth"
+      [header]="{
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      }"
+      [buttonText]="calendarOptions.buttonText"
+      [plugins]="calendarPlugins"
+      locale="locale"
+      [weekends]="calendarWeekends"
+      [events]="calendarEvents"
+      (dateClick)="handleDateClick($event)"
+    ></full-calendar>
+  </div>
+
+</div>
