@@ -26,7 +26,12 @@ export class AppComponent {
       week: 'Semaine',
       day: 'Jour',
       list: 'Liste'
-    }
+    },
+    businessHours: {
+      start: '00:00',
+      end:   '23:59',
+      dow:  [1,2,3,4,5],
+  },
   };
   locales: allLocales;
   locale: 'fr'; // the default locale
@@ -41,6 +46,7 @@ export class AppComponent {
 
   handleDateClick(arg) {
     if (confirm('Voulez-vous prendre RDV le : ' + arg.dateStr + ' ?')) {
+      arg.date.setHours( arg.date.getHours() + 8 );
       this.calendarEvents = this.calendarEvents.concat({
         title: 'Nouveau RDV',
         start: arg.date,
