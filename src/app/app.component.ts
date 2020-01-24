@@ -46,10 +46,11 @@ export class AppComponent {
 
   handleDateClick(arg) {
     if (confirm('Voulez-vous prendre RDV le : ' + arg.dateStr + ' ?')) {
-      arg.date.setHours( arg.date.getHours() + 8 );
+      arg.date.setHours( arg.date.getHours());
       this.calendarEvents = this.calendarEvents.concat({
         title: 'Nouveau RDV',
         start: arg.date,
+        constraint: 'businessHours',
       })
     }
   }
